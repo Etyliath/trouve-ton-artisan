@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         element: <h1 className='m-5'>Liste Artisan</h1>
       },
       {
-        path: 'artisant',
+        path: 'artisan',
         element: <h1 className='m-5'>Un Artisan</h1>
       },
       {
