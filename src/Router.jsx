@@ -27,19 +27,19 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'mentions',
-                element: <h1 className='m-5'>mentions légales</h1>
+                element: <h1 className='m-5'>Mentions légales</h1>
             },
             {
-                path:'personnals',
-                element: <h1 className='m-5'>mentions légales</h1>
+                path:'personal',
+                element: <h1 className='m-5'>Données personnelles</h1>
             },
             {
-                path:'accesibilty',
-                element: <h1 className='m-5'>mentions légales</h1>
+                path:'accessibility',
+                element: <h1 className='m-5'>Accessibilité</h1>
             },
             {
                 path:'cookies',
-                element: <h1 className='m-5'>mentions légales</h1>
+                element: <h1 className='m-5'>Cookies</h1>
             }
         ]
       }
