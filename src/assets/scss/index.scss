@@ -34,16 +34,22 @@ $green:#82b864;
   font-weight: 700;
   font-style: normal;
 }
-html,body{
+
+html,body,#root{
   margin: 0;
   height: 100%;
 }
 
-body {
-  background: #ffffff;
-  color: #384050;
-}
 #root,body{
   display: flex;
   flex-direction: column;
+  background: #ffffff;
+  color: #384050;
+}
+
+// couleur de l'étoile
+.bi-star,
+.bi-star-half,
+.bi-star-fill {
+  color: #f6e135ff;
 }
