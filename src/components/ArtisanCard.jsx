@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export function ArtisanCard({ header, title, location, note }) {
   return (
     <>
-      <Card bg='primary' text={'white'} className='m-1'>
+      <Card bg='primary' text={'white'} >
         <Card.Header>{header}</Card.Header>
         <Card.Body>
           <Card.Title> {title} </Card.Title>
