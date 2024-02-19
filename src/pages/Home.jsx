@@ -1,5 +1,6 @@
 import { ArtisanCard } from '../components/ArtisanCard';
 import datas from '../assets/data/datas.json';
+import { Carousel } from '../components/Carousel';
 
 export function Home() {
   const artisans = datas.artisans;
@@ -8,8 +9,9 @@ export function Home() {
   );
 
   return (
-    <main className='m-4 d-flex justify-content-center flex-column align-items-center '>
+    <main className='my-4 d-flex justify-content-center flex-column align-items-center '>
       <h1 className=''> Trouve ton artisan</h1>
+      <Carousel/>
       <div className='container'>
         <h2 className='mx-auto text-center '>Artisans du mois</h2>
         <div className='row justify-content-center'>
