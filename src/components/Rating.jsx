@@ -14,7 +14,7 @@ export function Rating({ note, max }) {
     id++;
     rating.push({
       id: id,
-      class: 'bi bi-star-fill me-1',
+      class: 'bi bi-star-fill me-1 text-warning',
     });
   }
   if (note < max) {
@@ -23,7 +23,7 @@ export function Rating({ note, max }) {
       id++;
       rating.push({
         id: id,
-        class: 'bi bi-star-half me-1',
+        class: 'bi bi-star-half me-1 text-warning',
       });
     }
     //affiche les étoile vide
@@ -31,7 +31,7 @@ export function Rating({ note, max }) {
       id++;
       rating.push({
         id: id,
-        class: 'bi bi-star me-1',
+        class: 'bi bi-star me-1 text-warning',
       });
     }
   }
