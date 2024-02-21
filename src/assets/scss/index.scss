@@ -3,8 +3,8 @@ $font-family-base: 'Graphik', sans-serif;
 $body-emphasis-color: #00497c;
 $primary: #0074c7;
 $secondary: #f1f8fc;
-$red:#cd2c2e;
-$green:#82b864;
+$red: #cd2c2e;
+$green: #82b864;
 
 @import '/node_modules/bootstrap/scss/bootstrap.scss';
 @import '/node_modules/bootstrap-icons/font/bootstrap-icons.scss';
@@ -35,15 +35,17 @@ $green:#82b864;
   font-style: normal;
 }
 
-html,body,#root{
+html,
+body,
+#root {
   margin: 0;
   height: 100%;
 }
 
-#root,body{
+#root,
+body {
   display: flex;
   flex-direction: column;
   background: #ffffff;
   color: #384050;
 }
-

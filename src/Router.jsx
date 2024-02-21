@@ -1,6 +1,7 @@
 import App from './App.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Home } from './pages/Home.jsx';
+import { ArtisanList } from './pages/ArtisanList.jsx';
 
 const router = createBrowserRouter([
   {
@@ -12,8 +13,12 @@ const router = createBrowserRouter([
         element: <Home/>
       },
       {
-        path: 'list',
-        element: <h1 className='m-5'>Liste Artisan</h1>
+        path: 'list/category/:filter',
+        element: <ArtisanList/>
+      },
+      {
+        path: 'list/search/:result',
+        element: <ArtisanList/>
       },
       {
         path: 'artisan',
