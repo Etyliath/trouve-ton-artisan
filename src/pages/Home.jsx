@@ -1,6 +1,7 @@
 import { ArtisanCard } from '../components/ArtisanCard';
 import datas from '../assets/data/datas.json';
 import { Carousel } from '../components/Carousel';
+import { Link } from 'react-router-dom';
 
 export function Home() {
   const artisans = datas.artisans;
@@ -15,12 +16,14 @@ export function Home() {
         <div className='row justify-content-center'>
           {filterArtisans.map((artisan) => (
             <div key={artisan.id} className='col-lg-3 col-md-6 col-12 mb-4 '>
-              <ArtisanCard
-                header={artisan.specialty}
-                title={artisan.name}
-                text={artisan.location}
-                rating={parseFloat(artisan.note)}
-              />
+              <Link to={`/artisan/${artisan.id}`}>
+                <ArtisanCard
+                  header={artisan.specialty}
+                  title={artisan.name}
+                  text={artisan.location}
+                  rating={parseFloat(artisan.note)}
+                />
+              </Link>
             </div>
           ))}
         </div>
