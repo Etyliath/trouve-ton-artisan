@@ -13,8 +13,17 @@ export function Header() {
   const handleChange = (e) => {
     e.preventDefault();
     setResult(e.target.value);
+    console.log(e.key);
   };
   const handleClick = () => {
+    searchBar();
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    searchBar();
+  };
+
+  function searchBar() {
     if (result === '' || result.length < 2) {
       toggle();
       setTimeout(() => {
@@ -24,7 +33,7 @@ export function Header() {
       navigate(`/list/search/${result}`);
       setResult('');
     }
-  };
+  }
   const handleChangeClass = () => {
     document.querySelector('.navbar-collapse').classList.remove('show');
   };
@@ -107,7 +116,11 @@ export function Header() {
               </li>
             </ul>
           </div>
-          <form className='d-flex order-2 mt-4 m-md-0 ' role='search'>
+          <form
+            className='d-flex order-2 mt-4 m-md-0 '
+            onSubmit={handleSubmit}
+            role='search'
+          >
             <input
               className='form-control bg-secondary border-primary '
               type='search'
@@ -121,7 +134,7 @@ export function Header() {
             <Overlay target={target.current} show={show} placement='bottom'>
               {(props) => (
                 <Tooltip id='overlay-search' {...props} className=' '>
-                ce champ doit contenir 2 lettres minimum
+                  ce champ doit contenir 2 lettres minimum
                 </Tooltip>
               )}
             </Overlay>
