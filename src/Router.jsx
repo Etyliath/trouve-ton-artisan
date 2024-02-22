@@ -2,6 +2,7 @@ import App from './App.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Home } from './pages/Home.jsx';
 import { ArtisanList } from './pages/ArtisanList.jsx';
+import { SingleArtisan } from './pages/SingleArtisan.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,8 +22,8 @@ const router = createBrowserRouter([
         element: <ArtisanList/>
       },
       {
-        path: 'artisan',
-        element: <h1 className='m-5'>Un Artisan</h1>
+        path: 'artisan/:id',
+        element: <SingleArtisan/>
       },
       {
         path:'legales/',
