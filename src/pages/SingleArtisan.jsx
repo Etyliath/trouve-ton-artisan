@@ -2,17 +2,26 @@ import { useParams } from 'react-router-dom';
 import datas from '../assets/data/datas.json';
 import { ArtisanCard } from '../components/ArtisanCard';
 import { useState } from 'react';
+import { ToastMessage } from '../components/ToastMessage';
+import { useToggle } from '../hooks/useToggle';
 
 export function SingleArtisan() {
   const { id } = useParams();
   const artisan = datas.artisans.find((v) => v.id === id);
-  const emailArtisant=artisan.email
+  const emailArtisant = artisan.email;
   let messageToSend = {
     name: '',
     email: '',
     subject: '',
-    message: '',
+    messageTo: emailArtisant,
+    messageFrom: '',
   };
+
+  //variable pour affichage du toast
+  const [show, toggleShow] = useToggle();
+  const [color, setColor] = useState('');
+  const [typeMessage, setTypeMessage] = useState('');
+  const [messageSend, setMessageSend] = useState('');
 
   // varialbes pour afficher enlever les span
   const [spanName, setSpanName] = useState(false);
@@ -145,28 +154,54 @@ export function SingleArtisan() {
       subject !== '' &&
       message !== ''
     ) {
-      console.log('formulaire Ok');
       messageToSend.name = name;
       messageToSend.email = email;
       messageToSend.subject = subject;
-      messageToSend.message = message;
-      
+      messageToSend.messageFrom = message;
+      const messageSendTest =
+        messageToSend.name +"\n"+
+        messageToSend.email +"\n"+
+        messageToSend.subject +"\n"+
+        messageToSend.messageFrom +"\n"+
+        'message envoyer une réponse sous 48 heures';
 
-      reset()
+      displayToast('bg-success-subtle', 'formulaire success', messageSendTest);
+      reset();
     } else {
-      console.log('Pas ok');
+      displayToast(
+        'bg-danger-subtle',
+        'formulaire erreur',
+        'veuillez remplir tous les champs du formulaire avec les valeurs appropriées'
+      );
     }
   };
-  const reset = ()=>{
-     setName('')
-     setEmail('')
-     setSubject('')
-     setMessage('')
+  const reset = () => {
+    setName('');
+    setEmail('');
+    setSubject('');
+    setMessage('');
+  };
+
+  /**
+   * Affiche le toast avec les variables remplit
+   * @param {string} color
+   * @param {string} typeMessage
+   * @param {string} messageSend
+   */
+  function displayToast(color, typeMessage, messageSend) {
+    toggleShow();
+    setColor(color);
+    setTypeMessage(typeMessage);
+    setMessageSend(messageSend);
+    setTimeout(() => {
+      toggleShow();
+    }, 5000);
   }
+
   return (
     <main>
       <h2 className=' text-center mt-4'>Contacter votre artisan</h2>
-      <div className='row justify-content-center  gap-1'>
+      <div className='row justify-content-center gap-1 '>
         <div className='m-4 col-10 col-md-4'>
           <ArtisanCard
             header={artisan.specialty}
@@ -179,6 +214,13 @@ export function SingleArtisan() {
             <p>{artisan.about}</p>
           </div>
         </div>
+        {show && (
+          <ToastMessage
+            color={color}
+            typeMessage={typeMessage}
+            messageSend={messageSend}
+          />
+        )}
         <form onSubmit={handleSubmit} className='col-10 col-md-4 mt-4'>
           <div className='mb-3'>
             <label htmlFor='name' className='form-label'>
