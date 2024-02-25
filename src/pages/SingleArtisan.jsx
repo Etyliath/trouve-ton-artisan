@@ -229,7 +229,7 @@ export function SingleArtisan() {
             <span className='ps-1 text-danger'>*</span>
             <input
               type='text'
-              className='form-control'
+              className='form-control bg-secondary border-primary'
               id='name'
               value={name}
               onChange={handleChange}
@@ -247,7 +247,7 @@ export function SingleArtisan() {
             <span className='ps-1 text-danger'>*</span>
             <input
               type='text'
-              className='form-control'
+              className='form-control bg-secondary border-primary'
               id='email'
               placeholder='name@example.com'
               value={email}
@@ -264,7 +264,7 @@ export function SingleArtisan() {
             <span className='ps-1 text-danger'>*</span>
             <input
               type='text'
-              className='form-control'
+              className='form-control bg-secondary border-primary'
               id='subject'
               value={subject}
               onChange={handleChange}
@@ -279,7 +279,7 @@ export function SingleArtisan() {
             </label>
             <span className='ps-1 text-danger'>*</span>
             <textarea
-              className='form-control'
+              className='form-control bg-secondary border-primary'
               id='message'
               rows='3'
               value={message}
