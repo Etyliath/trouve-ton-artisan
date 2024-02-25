@@ -20,7 +20,6 @@ export function ToastMessage({color,typeMessage,messageSend}) {
         />
          <strong className='me-2'>Message </strong>
         <div>
-         
           <small>{typeMessage}</small>
         </div>
       </div>
