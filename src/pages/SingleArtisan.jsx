@@ -214,6 +214,8 @@ export function SingleArtisan() {
             <p>{artisan.about}</p>
           </div>
         </div>
+        
+        <form onSubmit={handleSubmit} className='col-10 col-md-4 mt-4 position-relative'>
         {show && (
           <ToastMessage
             color={color}
@@ -221,7 +223,6 @@ export function SingleArtisan() {
             messageSend={messageSend}
           />
         )}
-        <form onSubmit={handleSubmit} className='col-10 col-md-4 mt-4'>
           <div className='mb-3'>
             <label htmlFor='name' className='form-label'>
               Nom

@@ -9,7 +9,7 @@ export function Carousel() {
   const dataCarousel = [
     {
       id: 1,
-      title: 'Etape 1 - Choissez votre catégorie ',
+      title: 'Etape 1 - Choisir ma catégorie ',
       body: (
         <div className='d-flex flex-column px-4 align-items-center '>
           <a
@@ -27,11 +27,11 @@ export function Carousel() {
         </div>
       ),
       description:
-        "'Cliquez sur le bouton de liste déroulant dans l'entête en de page pour en choisir votre catégorie",
+        "Cliquez sur le bouton de liste déroulant en haut de page pour en choisir ma catégorie",
     },
     {
       id: 2,
-      title: 'Etape 2 - Choisissez votre artisan',
+      title: 'Etape 2 - Choisir mon artisan',
       body: (
         <div className='container d-flex flex-wrap justify-content-center gap-2 warning'>
           <div className='bg-primary d-flex flex-column p-2 rounded-2 m-2 p-3'>
@@ -81,11 +81,11 @@ export function Carousel() {
         </div>
       ),
       description:
-        'Choisissez votre artisan parmis la liste des cartes affichés',
+        'Choisir mon artisan parmis la liste des cartes affichées',
     },
     {
       id: 3,
-      title: 'Etape 3 - Remplir le formulaire',
+      title: 'Etape 3 - Remplir mon formulaire',
       body: (
         <div className='container d-flex flex-wrap justify-content-center gap-2 warning'>
           <div className=' border border-primary  d-flex flex-column p-2 rounded-2 m-2 p-3'>
@@ -104,11 +104,11 @@ export function Carousel() {
         </div>
       ),
       description:
-        'Remplissez le formulaire avec votre nom, vote email et votre message pour contacter votre artisan',
+        'Remplir mon formulaire avec mon nom, email et mon message pour contacter mon artisan',
     },
     {
       id: 4,
-      title: 'Etape 4 - Réponse',
+      title: 'Etape 4 - une réponse',
       body: (
         <div>
           <img
@@ -149,7 +149,7 @@ export function Carousel() {
         if (page > dataCarousel.length - 2) {
           setPage(0);
         }
-      }, 5000);
+      }, 10000);
       return () => {
         clearInterval(timer);
       };
@@ -161,24 +161,24 @@ export function Carousel() {
       <div className='container-fluid d-flex justify-content-center mt-4 p-0'>
         <button
           className='btn btn-primary align-self-center rounded-5 py-2 m-0'
-          style={{ transform: 'translate(25px)' }}
+          style={{ transform: 'translate(10px)' }}
           onClick={() => paginateWithStop(-1)}
         >
           <i className='bi bi-chevron-left'></i>
         </button>
-        <div className=' border border-primary p-2 d-flex flex-column align-items-center'>
-          <h4 className='text-center fw-bolder '>Comment touver son artisan</h4>
-          <h5 className='pt-2 text-center '>{dataCarousel[cardIndex].title}</h5>
+        <div className=' border border-primary pt-2 col-md-8 row align-items-center'>
+          <h4 className='text-center col-12'>Comment touver mon artisan</h4>
+          <h5 className='pt-2 text-center col-12'>{dataCarousel[cardIndex].title}</h5>
           <div className='w-100 d-flex  g-2 justify-content-center'>
             {dataCarousel[cardIndex].body}
           </div>
-          <p className='px-4 text-wrap '>
+          <p className='px-4 text-wrap text-center'>
             {dataCarousel[cardIndex].description}
           </p>
         </div>
         <button
           className='btn btn-primary align-self-center rounded-5 py-2'
-          style={{ transform: 'translate(-25px)' }}
+          style={{ transform: 'translate(-10px)' }}
           onClick={() => paginateWithStop(1)}
         >
           <i className='bi bi-chevron-right'></i>

@@ -1,13 +1,9 @@
-import { useEffect } from "react";
 import PropTypes from 'prop-types';
 
 export function ToastMessage({color,typeMessage,messageSend}) {
-  useEffect(() => {
-      document.querySelector('.toast').classList.add(color);
-    },[]);
   return (
     <div
-      className='toast show position-absolute top-50 start-50 '
+      className={`toast show position-absolute top-50 start-50 translate-middle ${color}`}
       role='alert'
       aria-live='assertive'
       aria-atomic='true'

@@ -8,22 +8,16 @@ export function ArtisanList() {
   const artisans = datas.artisans;
   let filterArtisans = [];
 
-  if (filter === null && result === null) {
-    filterArtisans = artisans;
-  } else {
-    if (filter !== null && result === undefined) {
-      filterArtisans = artisans.filter(
-        (artisan) => artisan.category === filter
-      );
-    }
-    if (result !== null && filter === undefined) {
-      filterArtisans = artisans.filter(
-        (artisan) =>
-          artisan.name.toLowerCase().includes(result.toLowerCase()) ||
-          artisan.location.toLowerCase().includes(result.toLowerCase()) ||
-          artisan.specialty.toLowerCase().includes(result.toLowerCase())
-      );
-    }
+  if (filter !== undefined && result === undefined) {
+    filterArtisans = artisans.filter((artisan) => artisan.category === filter);
+  }
+  if (result !== undefined && filter === undefined) {
+    filterArtisans = artisans.filter(
+      (artisan) =>
+        artisan.name.toLowerCase().includes(result.toLowerCase()) ||
+        artisan.location.toLowerCase().includes(result.toLowerCase()) ||
+        artisan.specialty.toLowerCase().includes(result.toLowerCase())
+    );
   }
 
   return (

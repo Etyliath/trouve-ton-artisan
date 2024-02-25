@@ -10,19 +10,27 @@ export function Header() {
   const navigate = useNavigate();
   const target = useRef(null);
 
+  /**
+   * récupère la valeur de la searchBar
+   * @param {Event} e 
+   */
   const handleChange = (e) => {
     e.preventDefault();
     setResult(e.target.value);
-    console.log(e.key);
   };
-  const handleClick = () => {
-    searchBar();
-  };
+
+ /**
+  * Ouvre la page ArisanList avec le résultat de la recherche
+  * @param {Event} e 
+  */
   const handleSubmit = (e) => {
     e.preventDefault();
     searchBar();
   };
-
+  /**
+   * function qui valide les données de la searchBar
+   * et qui route vers la page ArtisanList
+   */
   function searchBar() {
     if (result === '' || result.length < 2) {
       toggle();
@@ -41,13 +49,13 @@ export function Header() {
   return (
     <header className='header text-primary px-4 shadow justify-content-center '>
       <nav className='navbar navbar-expand-lg py-4 '>
-        <div className='container-fluid d-flex '>
+        <div className='container-fluid d-flex p-0'>
           <Link
-            className='navbar-brand order-0 me-4'
+            className='navbar-brand order-0 '
             to='/'
             onClick={handleChangeClass}
           >
-            <img src='../src/assets/images/Logo.png' alt='logo du site' />
+            <img src='/src/assets/images/Logo.png' alt='logo du site' />
           </Link>
           <button
             className='navbar-toggler order-3 mt-4 m-md-0 border-primary'
@@ -67,7 +75,7 @@ export function Header() {
             <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
               <li className='nav-item dropdown'>
                 <a
-                  className='nav-link dropdown-toggle bg-primary text-secondary rounded-pill px-3 py-1'
+                  className='nav-link dropdown-toggle bg-primary text-secondary rounded-pill px-3 py-1 ms-auto '
                   href='#'
                   role='button'
                   data-bs-toggle='dropdown'
@@ -125,7 +133,6 @@ export function Header() {
               className='form-control bg-secondary border-primary '
               type='search'
               ref={target}
-              placeholder='Search'
               aria-label='Search'
               name='search'
               value={result}
@@ -139,9 +146,8 @@ export function Header() {
               )}
             </Overlay>
             <button
-              className='btn btn-outline-primary ms-3'
-              type='button'
-              onClick={handleClick}
+              className='btn btn-outline-primary ms-3 '
+              type='submit'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'

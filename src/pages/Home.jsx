@@ -11,7 +11,7 @@ export function Home() {
     <main className='my-4 d-flex justify-content-center flex-column align-items-center '>
       <h1 className=''> Trouve ton artisan</h1>
       <Carousel />
-      <div className='container mt-4'>
+      <div className='container mt-4 p-4'>
         <h2 className='mx-auto text-center '>Artisans du mois</h2>
         <div className='row justify-content-center'>
           {filterArtisans.map((artisan) => (
