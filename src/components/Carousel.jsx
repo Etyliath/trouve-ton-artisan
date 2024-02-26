@@ -1,5 +1,6 @@
 import { wrap } from '../functions/wrap';
 import { useEffect, useState } from 'react';
+import enveloppe from '../assets/images/paper-airplane.png'
 
 export function Carousel() {
   const [page, setPage] = useState(0);
@@ -16,7 +17,17 @@ export function Carousel() {
             className='btn btn-primary disabled placeholder rounded-5 '
             aria-disabled='true'
           >
-            Catégorie <i className='bi bi-chevron-down ms-5'></i>
+            Catégorie{' '}
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='16'
+              height='16'
+              fill='currentColor'
+              className='bi bi-chevron-down'
+              viewBox='0 0 16 16'
+            >
+              <path d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708' />
+            </svg>
           </a>
           <p className=' placeholder-wave col-10 border px-2 pb-2 '>
             <span className='placeholder rounded-2 col-12'></span>
@@ -27,7 +38,7 @@ export function Carousel() {
         </div>
       ),
       description:
-        "Cliquez sur le bouton de liste déroulant en haut de page pour en choisir ma catégorie",
+        'Cliquez sur le bouton de liste déroulant en haut de page pour en choisir ma catégorie',
     },
     {
       id: 2,
@@ -80,8 +91,7 @@ export function Carousel() {
           </div>
         </div>
       ),
-      description:
-        'Choisir mon artisan parmis la liste des cartes affichées',
+      description: 'Choisir mon artisan parmis la liste des cartes affichées',
     },
     {
       id: 3,
@@ -112,7 +122,7 @@ export function Carousel() {
       body: (
         <div>
           <img
-            src='/src/assets/images/paper-airplane-3128885_128.png'
+            src={enveloppe}
             alt="dessin d'une ennveloppe"
           />
         </div>
@@ -124,7 +134,7 @@ export function Carousel() {
   const cardIndex = wrap(0, dataCarousel.length, page);
   /**
    * scroll carousel
-   * @param {number} newDirection 
+   * @param {number} newDirection
    */
   const paginate = (newDirection) => {
     setPage(page + newDirection);
@@ -132,7 +142,7 @@ export function Carousel() {
 
   /**
    * scroll carousel and stop autoscroll
-   * @param {number} newDirection 
+   * @param {number} newDirection
    */
   const paginateWithStop = (newDirection) => {
     toggle(false);
@@ -154,7 +164,7 @@ export function Carousel() {
         clearInterval(timer);
       };
     }
-  },);
+  });
 
   return (
     <>
@@ -164,11 +174,22 @@ export function Carousel() {
           style={{ transform: 'translate(10px)' }}
           onClick={() => paginateWithStop(-1)}
         >
-          <i className='bi bi-chevron-left'></i>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='16'
+            height='16'
+            fill='currentColor'
+            className='bi bi-chevron-left'
+            viewBox='0 0 16 16'
+          >
+            <path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0' />
+          </svg>
         </button>
         <div className=' border border-primary pt-2 col-md-8 row align-items-center'>
           <h4 className='text-center col-12'>Comment touver mon artisan</h4>
-          <h5 className='pt-2 text-center col-12'>{dataCarousel[cardIndex].title}</h5>
+          <h5 className='pt-2 text-center col-12'>
+            {dataCarousel[cardIndex].title}
+          </h5>
           <div className='w-100 d-flex  g-2 justify-content-center'>
             {dataCarousel[cardIndex].body}
           </div>
@@ -181,7 +202,16 @@ export function Carousel() {
           style={{ transform: 'translate(-10px)' }}
           onClick={() => paginateWithStop(1)}
         >
-          <i className='bi bi-chevron-right'></i>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='16'
+            height='16'
+            fill='currentColor'
+            className='bi bi-chevron-right'
+            viewBox='0 0 16 16'
+          >
+            <path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708' />
+          </svg>
         </button>
       </div>
     </>
