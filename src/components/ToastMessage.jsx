@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import icon from '../assets/images/favicon.png'
 
 export function ToastMessage({color,typeMessage,messageSend}) {
   return (
@@ -10,7 +11,7 @@ export function ToastMessage({color,typeMessage,messageSend}) {
     >
       <div className='toast-header d-flex flex-column mt-2'>
         <img
-          src='/src/assets/images/favicon.png'
+          src={icon}
           alt=''
           className='rounded me-auto '
         />

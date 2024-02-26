@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Overlay } from 'react-bootstrap';
 import { Tooltip } from 'react-bootstrap';
 import { useToggle } from '../hooks/useToggle';
+import logo from '../assets/images/Logo.png'
 
 export function Header() {
   const [result, setResult] = useState('');
@@ -55,7 +56,7 @@ export function Header() {
             to='/'
             onClick={handleChangeClass}
           >
-            <img src='/src/assets/images/Logo.png' alt='logo du site' />
+            <img src={logo} alt='logo du site' />
           </Link>
           <button
             className='navbar-toggler order-3 mt-4 m-md-0 border-primary'
