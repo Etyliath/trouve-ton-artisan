@@ -1,48 +1,49 @@
 import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Overlay } from 'react-bootstrap';
-import { Tooltip } from 'react-bootstrap';
-import { useToggle } from '../hooks/useToggle';
-import logo from '../assets/images/Logo.png'
+import logo from '../assets/images/Logo.png';
 
 export function Header() {
   const [result, setResult] = useState('');
-  const [show, toggle] = useToggle();
   const navigate = useNavigate();
   const target = useRef(null);
+  const [spanSearch, setSpanSearch] = useState(false);
 
   /**
    * récupère la valeur de la searchBar
-   * @param {Event} e 
+   * @param {Event} e
    */
   const handleChange = (e) => {
     e.preventDefault();
-    setResult(e.target.value);
+    const regex =
+      /^[a-z0-9ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ',_-\s]+$/gi;
+    if (regex.test(e.target.value)) {
+      setSpanSearch(false);
+      setResult(e.target.value);
+    } else {
+      setSpanSearch(true);
+      setResult(e.target.value);
+    }
   };
 
- /**
-  * Ouvre la page ArisanList avec le résultat de la recherche
-  * @param {Event} e 
-  */
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    searchBar();
-  };
   /**
-   * function qui valide les données de la searchBar
-   * et qui route vers la page ArtisanList
+   * Ouvre la page ArisanList avec le résultat de la recherche
+   * @param {Event} e
    */
-  function searchBar() {
-    if (result === '' || result.length < 2) {
-      toggle();
+  const handleSubmit = (e) => {
+    const regex =
+    /^[a-z0-9ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ',_-\s]+$/gi;
+    e.preventDefault();
+    if (spanSearch || result === '' || result.length < 2 || !regex.test(result)) {
+      setSpanSearch(true)
       setTimeout(() => {
-        toggle();
+        setSpanSearch(false);
       }, 3000);
     } else {
       navigate(`/list/search/${result}`);
       setResult('');
     }
-  }
+  };
+
   const handleChangeClass = () => {
     document.querySelector('.navbar-collapse').classList.remove('show');
   };
@@ -130,6 +131,7 @@ export function Header() {
             onSubmit={handleSubmit}
             role='search'
           >
+            <div className="d-flex flex-column align-items-center">
             <input
               className='form-control bg-secondary border-primary '
               type='search'
@@ -139,17 +141,11 @@ export function Header() {
               value={result}
               onChange={handleChange}
             />
-            <Overlay target={target.current} show={show} placement='bottom'>
-              {(props) => (
-                <Tooltip id='overlay-search' {...props} className=' '>
-                  ce champ doit contenir 2 lettres minimum
-                </Tooltip>
-              )}
-            </Overlay>
-            <button
-              className='btn btn-outline-primary ms-3 '
-              type='submit'
-            >
+            {spanSearch && (
+              <span className='pt-1 text-danger'>Entée incorrect</span>
+            )}
+            </div>
+            <button className='btn btn-outline-primary ms-3 ' type='submit'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='16'

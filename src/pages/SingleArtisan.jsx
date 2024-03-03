@@ -33,8 +33,8 @@ export function SingleArtisan() {
   const regexList = {
     name: /^[a-z]+?(\s?-?)[a-z]* ?[a-z]*$/gi,
     email: /^[a-z0-9-\\.]+@[a-z0-9-]+.[a-z]{2,}$/gi,
-    subject: /^[a-z]+?(\s?-?)[a-z]* ?[a-z]*$/gi,
-    message: /^[a-z]+?(\s?-?)[a-z]* ?[a-z]*$/gi,
+    subject: /^[a-z0-9ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ',_-\s]+$/gi,
+    message: /^[a-z0-9ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ',_-\s]+$/gi,
   };
 
   //variales des champ controler par React
@@ -53,7 +53,7 @@ export function SingleArtisan() {
   };
 
   /**
-   * determine ma regex à utiliser
+   * determine la regex à utiliser
    * @param {string} id
    * @returns
    */
@@ -158,14 +158,8 @@ export function SingleArtisan() {
       messageToSend.email = email;
       messageToSend.subject = subject;
       messageToSend.messageFrom = message;
-      const messageSendTest =
-        messageToSend.name +"\n"+
-        messageToSend.email +"\n"+
-        messageToSend.subject +"\n"+
-        messageToSend.messageFrom +"\n"+
-        'message envoyer une réponse sous 48 heures';
 
-      displayToast('bg-success-subtle', 'formulaire success', messageSendTest);
+      displayToast('bg-success-subtle', 'formulaire envoyé', 'votre message a bien été envoyé vous receverez une réponse sous 48 heures ');
       reset();
     } else {
       displayToast(
