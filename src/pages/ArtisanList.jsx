@@ -22,7 +22,9 @@ export function ArtisanList() {
 
   return (
     <main className=' container-fluid m-3  '>
-      <h2 className=' text-center'>Liste des artisans {filter}</h2>
+      <h2 className=' text-center'>Liste des artisans</h2>
+      {filter && <h4 className=' text-center'>Catégorie : {filter}</h4>}
+      {result && <h5 className=' text-center'>Résultat pour la recherche : {result}</h5>}
       <div className='row justify-content-center my-4'>
         {filterArtisans.map((artisan) => (
           <div className='col-10 col-md-3 m-1 ms-sm-2' key={artisan.id}>
